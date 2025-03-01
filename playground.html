@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NamasteLang</title>
+    <style>
+        /* General Styles */
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+        }
+        /* Playground Image */
+        
+        .playground-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Container for Textarea and Output */
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+        }
+        
+        textarea {
+            width: 45%;
+            height: 300px;
+            background-color: #2e2e2e;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            resize: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .output {
+            width: 45%;
+            height: 300px;
+            background-color: #f5f5f5;
+            color: black;
+            padding: 15px;
+            overflow-y: auto;
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Buttons */
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #ff9800;
+            border: none;
+            color: white;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        /* Message Container */
+        
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .error {
+            background-color: #f44336;
+            color: white;
+        }
+        /* Documentation Container */
+        
+        .documentation-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2e2e2e;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .documentation-container h1,
+        .documentation-container h2,
+        .documentation-container h3 {
+            color: #ff9800;
+        }
+        
+        .documentation-container code {
+            background-color: #1e1e1e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            color: #ff9800;
+        }
+        
+        .documentation-container a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+        
+        .documentation-container a:hover {
+            text-decoration: underline;
+        }
+        
+        .documentation-container pre {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            position: relative;
+        }
+        /* Copy Button */
+        
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background-color: #e68900;
+        }
+        /* Responsive Styles */
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            textarea,
+            .output {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            textarea,
+            .output {
+                height: 200px;
+            }
+            button {
+                font-size: 18px;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<link rel="icon" type="image/png" sizes="16x16" href="NL logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="NL logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="NL logo.png">
+<link rel="manifest" href="NL logo.png">
+
+
+<body>
+    <!-- Playground Image -->
+    <div>
+        <img src="playground-23-2-2025 (1).png" alt="playground" class="playground-image">
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <textarea id="code" placeholder="// Write your NamasteLang code here">namaste
+    bolo "Hello, World!";
+samaapt</textarea>
+        <div class="output" id="output"></div>
+    </div>
+
+    <!-- Run Code, Clear, and About Buttons -->
+    <div class="buttons">
+        <button onclick="runCode()">Run Code</button>
+        <button onclick="clearCode()">Clear</button>
+        <button onclick="window.location.href='about.html'">About NL</button>
+    </div>
+
+    <!-- Message Container -->
+    <div id="message" class="message"></div>
+
+    <div class="documentation-container">
+        <h1>NamasteLang Documentation</h1>
+        <p>NamasteLang is a dynamically typed toy programming language, inspired by Hindi words and phrases, written in JavaScript.</p>
+
+        <h2>General</h2>
+        <p><code>namaste</code> is the entry point for the program, and all programs must end with <code>samaapt</code>. Anything outside of it will be ignored.</p>
+        <pre><code id="code-general">namaste
+        // Write code here
+    samaapt</code><button class="copy-button" onclick="copyCode('code-general', this)">Copy</button></pre>
+
+        <h2>Variables</h2>
+        <p>Variables can be declared using <code>ye hai</code>.</p>
+        <pre><code id="code-variables">namaste
+            ye hai naam = "NamasteLang";
+            ye hai sankhya = 42;
+            ye hai satya = sahi;
+        
+            bolo "Naam: ", naam;
+            bolo "Sankhya: ", sankhya;
+            bolo "Satya: ", satya;
+        
+            agar (sankhya > 10) {
+                bolo "Sankhya 10 se badi hai!";
+            } warna {
+                bolo "Sankhya 10 se chhoti hai!";
+            }
+        samaapt</code><button class="copy-button" onclick="copyCode('code-variables', this)">Copy</button></pre>
+
+        <h2>Types</h2>
+        <p>Numbers and strings are like other languages. Null values can be denoted using <code>kuch nahi</code>. <code>sahi</code> and <code>galat</code> are the boolean values.</p>
+        <pre><code id="code-types">namaste
+        ye hai a = 100;
+        ye hai b = "Hello, World!";
+        ye hai c = kuch nahi;
+        ye hai d = sahi;
+        ye hai e = galat;
+    samaapt</code><button class="copy-button" onclick="copyCode('code-types', this)">Copy</button></pre>
+
+
+
+        <h2>Conditionals</h2>
+        <p>NamasteLang supports an <code>agar</code> (if) block, <code>nahi to</code> (else if) blocks, and a <code>warna</code> (else) block.</p>
+        <pre><code id="code-conditionals">namaste
+            ye hai umar = 10;
+        
+            agar (umar < 18) {
+                bolo "Aap abhi bachhe ho.";
+            } nahi to (umar >= 18 aur umar < 60) {
+                bolo "Aap badhe ho geye ho.";
+            } warna {
+                bolo "Aap buddhe ho.";
+            }
+        samaapt</code><button class="copy-button" onclick="copyCode('code-conditionals', this)">Copy</button></pre>
+
+        <h2>Loops</h2>
+        <p>Use <code>jab tak</code> (while) to execute a block of code as long as a condition is <code>sahi</code>. Use <code>bas karo</code> to break the loop and <code>agla dekho</code> to continue to the next iteration.</p>
+        <pre><code id="code-loops">namaste
+        ye hai ginti = 0;
+        jab tak (ginti < 5) {
+            bolo "Count: ", ginti;
+            ginti = ginti + 1;
+        }
+    samaapt</code><button class="copy-button" onclick="copyCode('code-loops', this)">Copy</button></pre>
+
+
+        <script>
+            function runCode() {
+                const code = document.getElementById("code").value;
+                const outputDiv = document.getElementById("output");
+                const messageDiv = document.getElementById("message");
+                outputDiv.innerHTML = ""; // Clear previous output
+                messageDiv.innerHTML = ""; // Clear previous messages
+                inputIndex = 0; // Reset input index for each run
+
+                try {
+                    // Translate NamasteLang to JavaScript
+                    let translatedCode = code
+                        .replace(/namaste/g, '')
+                        .replace(/samaapt/g, '')
+                        .replace(/ye hai\s+(\w+)\s*=\s*(.+);?/g, 'let $1 = $2;') // Variables
+                        .replace(/kuch nahi/g, 'null') // Null
+                        .replace(/sahi/g, 'true') // True
+                        .replace(/galat/g, 'false') // False
+                        .replace(/input lo/g, () => {
+                            if (inputIndex < userInputs.length) {
+                                return `"${userInputs[inputIndex++]}"`; // Use custom input
+                            } else {
+                                throw new Error("Insufficient user inputs provided.");
+                            }
+                        })
+                        .replace(/number banao\s+(\w+)/g, 'parseFloat($1)') // Convert string to number
+                        .replace(/bolo\s+["'`](.*?)["'`]\s*,\s*(\w+)/g, 'output.push("$1 " + $2)') // Print strings with variables
+                        .replace(/bolo\s+["'`](.*?)["'`]/g, 'output.push("$1")') // Print strings
+                        .replace(/bolo\s+(.+)/g, 'output.push(String($1))') // Print variables/numbers
+                        .replace(/agar\s*\((.*?)\)/g, 'if ($1)') // If condition
+                        .replace(/nahi to/g, 'else if') // Else if
+                        .replace(/warna/g, 'else') // Else
+                        .replace(/jab tak\s*\((.*?)\)/g, 'while ($1)') // While loop
+                        .replace(/bas karo/g, 'break') // Break
+                        .replace(/agla dekho/g, 'continue') // Continue
+                        .replace(/aur/g, '&&'); // Logical AND
+
+                    // Custom output array to capture logs
+                    let output = [];
+                    new Function('output', translatedCode)(output);
+
+                    // Display the output
+                    outputDiv.innerHTML = output.join('<br>');
+
+                    // Show success message
+                    messageDiv.innerHTML = "Congratulations Aapko🎉aap aage bardhte rahiye!";
+                    messageDiv.className = "message success";
+                } catch (error) {
+                    // Show error message
+                    messageDiv.innerHTML = "Aapka code galat he ! Error: " + error.message;
+                    messageDiv.className = "message error";
+                }
+            }
+
+            // Clear the textarea and output
+            function clearCode() {
+                document.getElementById("code").value = ""; // Clear textarea
+                document.getElementById("output").innerHTML = ""; // Clear output
+                document.getElementById("message").innerHTML = ""; // Clear message
+            }
+
+            // Copy code to clipboard
+            function copyCode(elementId, button) {
+                const codeElement = document.getElementById(elementId);
+                const codeText = codeElement.innerText;
+
+                // Check if the Clipboard API is available
+                if (!navigator.clipboard) {
+                    alert("Clipboard API not supported in this browser.");
+                    return;
+                }
+
+                // Copy the code to the clipboard
+                navigator.clipboard.writeText(codeText)
+                    .then(() => {
+                        // Change button text to "Copied!"
+                        button.innerText = "Copied!";
+                        button.disabled = true;
+
+                        // Revert button text to "Copy" after 5 seconds
+                        setTimeout(() => {
+                            button.innerText = "Copy";
+                            button.disabled = false;
+                        }, 5000);
+                    })
+                    .catch((err) => {
+                        console.error("Failed to copy text: ", err);
+                        alert("Failed to copy text. Please try again.");
+                    });
+            }
+
+            // Copy code to clipboard
+            function copyCode(elementId, button) {
+                const codeElement = document.getElementById(elementId);
+                const codeText = codeElement.textContent || codeElement.innerText;
+
+                // Check if the Clipboard API is available
+                if (!navigator.clipboard) {
+                    alert("Clipboard API not supported in this browser.");
+                    return;
+                }
+
+                // Copy the code to the clipboard
+                navigator.clipboard.writeText(codeText)
+                    .then(() => {
+                        // Change button text to "Copied!"
+                        button.innerText = "Copied!";
+                        button.disabled = true;
+
+                        // Revert button text to "Copy" after 5 seconds
+                        setTimeout(() => {
+                            button.innerText = "Copy";
+                            button.disabled = false;
+                        }, 5000); // 5000 milliseconds = 5 seconds
+                    })
+                    .catch((err) => {
+                        console.error("Failed to copy text: ", err);
+                        alert("Failed to copy text. Please try again.");
+                    });
+            }
+            // Disable right-click
+            document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+            // Disable keyboard shortcuts for inspecting or saving the page
+            document.addEventListener("keydown", (event) => {
+                if (
+                    event.ctrlKey && (event.key === "u" || event.key === "U") || // Ctrl+U (View Source)
+                    event.ctrlKey && event.shiftKey && (event.key === "i" || event.key === "I") || // Ctrl+Shift+I (DevTools)
+                    event.ctrlKey && event.shiftKey && (event.key === "c" || event.key === "C") || // Ctrl+Shift+C (Inspect Element)
+                    event.ctrlKey && event.shiftKey && (event.key === "j" || event.key === "J") || // Ctrl+Shift+J (Console)
+                    event.key === "F12" || // F12 (DevTools)
+                    event.ctrlKey && (event.key === "s" || event.key === "S") || // Ctrl+S (Save Page)
+                    event.ctrlKey && (event.key === "p" || event.key === "P") // Ctrl+P (Print)
+                ) {
+                    event.preventDefault();
+                    console.warn("Action blocked for security reasons.");
+                }
+            });
+
+            // Disable dragging elements
+            document.addEventListener("dragstart", (event) => event.preventDefault());
+
+            // Disable text selection and copying
+            document.addEventListener("selectstart", (event) => event.preventDefault());
+            document.addEventListener("copy", (event) => {
+                event.preventDefault();
+                console.warn("Copying is disabled.");
+            });
+
+            // Detect DevTools opening
+            let devtoolsOpen = false;
+            const element = new Image();
+            Object.defineProperty(element, "id", {
+                get: function() {
+                    devtoolsOpen = true;
+                    document.body.innerHTML = "<h1 style='text-align:center; margin-top:20%; color:red;'>DevTools Detected! Access Denied.</h1>";
+                    setTimeout(() => window.location.href = "https://www.google.com", 2000); // Redirect after 2 seconds
+                }
+            });
+            console.log("%c", element);
+        </script>
+</body>
+
+</html>

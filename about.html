@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Animated About Me</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- GSAP for smooth cursor animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <style>
+        /* Custom animations */
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px rgba(192, 132, 252, 0.6), 0 0 20px rgba(192, 132, 252, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(192, 132, 252, 0.8), 0 0 30px rgba(192, 132, 252, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(192, 132, 252, 0.6), 0 0 20px rgba(192, 132, 252, 0.4);
+            }
+        }
+        
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* Gradient background animation */
+        
+        body {
+            background: linear-gradient(-45deg, #1a1a1a, #2c3e50, #000000, #4a148c);
+            background-size: 400% 400%;
+            animation: gradientBackground 10s ease infinite;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            cursor: none;
+            /* Hide default cursor */
+        }
+        /* Profile picture styling */
+        
+        .profile-picture {
+            width: 120px;
+            /* Smaller on mobile */
+            height: 120px;
+            /* Smaller on mobile */
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-picture {
+                width: 150px;
+                /* Larger on desktop */
+                height: 150px;
+                /* Larger on desktop */
+            }
+        }
+        /* Social icons styling */
+        
+        .social-icons a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #c084fc;
+            /* Light purple */
+            transform: scale(1.2);
+        }
+        /* Gradient text */
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #c084fc, #f472b6, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        /* Custom cursor */
+        
+        .cursor {
+            pointer-events: none;
+        }
+        
+        .cursor__ball {
+            position: fixed;
+            top: 0;
+            left: 0;
+            mix-blend-mode: difference;
+            z-index: 1000;
+        }
+        
+        .cursor__ball--big circle {
+            fill: #f7f8fa;
+        }
+        
+        .cursor__ball--small circle {
+            fill: #f7f8fa;
+        }
+    </style>
+</head>
+<link rel="icon" type="image/png" sizes="16x16" href="NL logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="NL logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="NL logo.png">
+<link rel="manifest" href="NL logo.png">
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor">
+        <div class="cursor__ball cursor__ball--big">
+            <svg height="60" width="60">
+                <circle cx="30" cy="30" r="25" stroke-width="0"></circle>
+            </svg>
+        </div>
+        <div class="cursor__ball cursor__ball--small">
+            <svg height="20" width="20">
+                <circle cx="10" cy="10" r="8" stroke-width="0"></circle>
+            </svg>
+        </div>
+    </div>
+
+    <!-- About Me Section -->
+    <div class="text-center px-4">
+        <!-- Added padding for mobile -->
+        <!-- Profile Picture -->
+        <img src="download__11_-removebg-preview.png" alt="Your Photo" class="profile-picture mx-auto mb-6">
+
+        <!-- Heading -->
+        <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">
+            About NamasteLang
+        </h1>
+
+        <!-- Description -->
+        <p class="mt-6 text-base md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
+            NamasteLang is a fun, beginner-friendly programming language that adds a Hindi twist to coding! Developed by <span style="color: #f3f706;">Kenedy Duwarah</span> BCA student, it lets users write programs using Hindi-based commands with simple,
+            easy-to-understand syntax. Designed for learning, experimentation, and fun, NamasteLang is perfect for coding newbies or anyone looking to try something unique. Whether you're a Hindi speaker or just curious, NamasteLang makes coding accessible,
+            relatable, and enjoyable!
+        </p>
+
+        <!-- Social Icons -->
+        <div class="social-icons mt-8 space-x-6">
+            <a href="https://www.linkedin.com/in/kenedy-duwarah-42bb43287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" class="hoverable">
+                <i class="fab fa-linkedin-in text-2xl md:text-3xl"></i>
+                <!-- Smaller icons on mobile -->
+            </a>
+            <a href="https://github.com/Kenedy-duwarah" target="_blank" aria-label="GitHub" class="hoverable">
+                <i class="fab fa-github text-2xl md:text-3xl"></i>
+                <!-- Smaller icons on mobile -->
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const _0x689de = _0x4cbc;
+        (function(_0x38b887, _0x301641) {
+            const _0x1fc647 = _0x4cbc,
+                _0x5b3df9 = _0x38b887();
+            while (!![]) {
+                try {
+                    const _0x150812 = -parseInt(_0x1fc647(0x15d)) / 0x1 + -parseInt(_0x1fc647(0x167)) / 0x2 * (parseInt(_0x1fc647(0x162)) / 0x3) + -parseInt(_0x1fc647(0x161)) / 0x4 * (-parseInt(_0x1fc647(0x16b)) / 0x5) + -parseInt(_0x1fc647(0x15f)) / 0x6 + -parseInt(_0x1fc647(0x15b)) / 0x7 + parseInt(_0x1fc647(0x156)) / 0x8 * (-parseInt(_0x1fc647(0x157)) / 0x9) + parseInt(_0x1fc647(0x165)) / 0xa * (parseInt(_0x1fc647(0x168)) / 0xb);
+                    if (_0x150812 === _0x301641) break;
+                    else _0x5b3df9['push'](_0x5b3df9['shift']());
+                } catch (_0x52ae58) {
+                    _0x5b3df9['push'](_0x5b3df9['shift']());
+                }
+            }
+        }(_0x3f5a, 0x2702c));
+
+        function adjustCursorSize() {
+            const _0x5d0357 = _0x4cbc,
+                _0x15b83c = document[_0x5d0357(0x16c)](_0x5d0357(0x158)),
+                _0x4ba7dc = document['querySelector']('.cursor__ball--small\x20circle');
+            window[_0x5d0357(0x154)] <= 0x300 ? (_0x15b83c[_0x5d0357(0x169)]('r', 0xf), _0x4ba7dc[_0x5d0357(0x169)]('r', 0x5)) : (_0x15b83c[_0x5d0357(0x169)]('r', 0x19), _0x4ba7dc['setAttribute']('r', 0x8));
+        }
+
+        function _0x3f5a() {
+            const _0x1700fd = ['touchend', '8fEUWpH', '477693Qvvcye', '.cursor__ball--big\x20circle', 'mouseleave', 'addEventListener', '138082KBUWoO', 'touches', '110450rpkWrG', 'body', '944046kAPRoQ', 'pageY', '12IFmSDi', '786297lcMVDa', 'pageX', 'length', '10wnmpaf', 'touchstart', '2ArwCaF', '5654627Ajpuzs', 'setAttribute', '.cursor__ball--small', '414040GIesiZ', 'querySelector', 'touchmove', '.cursor__ball--big', 'resize', 'innerWidth'];
+            _0x3f5a = function() {
+                return _0x1700fd;
+            };
+            return _0x3f5a();
+        }
+        adjustCursorSize(), window[_0x689de(0x15a)](_0x689de(0x153), adjustCursorSize);
+        const $bigBall = document[_0x689de(0x16c)](_0x689de(0x16e)),
+            $smallBall = document[_0x689de(0x16c)](_0x689de(0x16a)),
+            $hoverables = document['querySelectorAll']('.hoverable');
+
+        function _0x4cbc(_0x28242a, _0x28d3e6) {
+            const _0x3f5aff = _0x3f5a();
+            return _0x4cbc = function(_0x4cbc94, _0x475c5e) {
+                _0x4cbc94 = _0x4cbc94 - 0x153;
+                let _0x47633b = _0x3f5aff[_0x4cbc94];
+                return _0x47633b;
+            }, _0x4cbc(_0x28242a, _0x28d3e6);
+        }
+        document[_0x689de(0x15e)]['addEventListener']('mousemove', onMouseMove), document[_0x689de(0x15e)][_0x689de(0x15a)](_0x689de(0x16d), onTouchMove);
+        for (let i = 0x0; i < $hoverables[_0x689de(0x164)]; i++) {
+            $hoverables[i]['addEventListener']('mouseenter', onMouseHover), $hoverables[i][_0x689de(0x15a)](_0x689de(0x159), onMouseHoverOut), $hoverables[i]['addEventListener'](_0x689de(0x166), onMouseHover), $hoverables[i][_0x689de(0x15a)](_0x689de(0x155), onMouseHoverOut);
+        }
+
+        function onMouseMove(_0x259c22) {
+            const _0x56cd1e = _0x689de;
+            gsap['to']($bigBall, 0.4, {
+                'x': _0x259c22[_0x56cd1e(0x163)] - 0x1e,
+                'y': _0x259c22[_0x56cd1e(0x160)] - 0x1e
+            }), gsap['to']($smallBall, 0.1, {
+                'x': _0x259c22['pageX'] - 0xa,
+                'y': _0x259c22[_0x56cd1e(0x160)] - 0xa
+            });
+        }
+
+        function onTouchMove(_0xd34ee6) {
+            const _0x684137 = _0x689de,
+                _0x2d0986 = _0xd34ee6[_0x684137(0x15c)][0x0];
+            gsap['to']($bigBall, 0.4, {
+                'x': _0x2d0986[_0x684137(0x163)] - 0x1e,
+                'y': _0x2d0986[_0x684137(0x160)] - 0x1e
+            }), gsap['to']($smallBall, 0.1, {
+                'x': _0x2d0986[_0x684137(0x163)] - 0xa,
+                'y': _0x2d0986[_0x684137(0x160)] - 0xa
+            });
+        }
+
+        function onMouseHover() {
+            gsap['to']($bigBall, 0.3, {
+                'scale': 0x4
+            });
+        }
+
+        function onMouseHoverOut() {
+            gsap['to']($bigBall, 0.3, {
+                'scale': 0x1
+            });
+        }
+    </script>
+</body>
+
+</html>
